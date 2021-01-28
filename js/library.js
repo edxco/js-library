@@ -1,16 +1,27 @@
-function Book(title, pages, status) {
-    this.title = title
-    this.pages = pages
-    this.status = status
-    this.info = function() {
-        let text = 'already read'
-        let result = ''
-        if (status = true) {
-            text = 'not read yet'
-        }
-        return title.concat(title + pages + 'pages' + text)
-    }
+let myLibrary = [];
+
+function Book(title, author, page, read) {
+  this.title = title
+  this.author = author
+  this.page = page
+  this.read = read
 }
 
-let theHobbit = new Book('The Hobbit by J.R.R. Tolkien', 295, false)
-console.log(theHobbit.info())
+function addBookToLibrary() {
+   title = document.getElementById('title').value;
+   author = document.getElementById('author').value;
+   page = document.getElementById('page').value;
+   read = document.getElementById('read').checked;
+   //let x = Book.new(title, author, page, read)
+   myLibrary.push(new Book(title, author, page, read))
+}
+
+let but_addBook = document.querySelector('#btn')
+but_addBook.addEventListener('click', appear)
+
+function appear(){
+    document.getElementById('addBook').className = "d-block";
+}
+
+let submit = document.querySelector('.submit')
+submit.addEventListener('click', addBookToLibrary)
