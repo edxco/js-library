@@ -13,36 +13,48 @@
 
 <body>
 
-  <div class="container text-center mt-5">
-    <p>
-      <button id="btn" class="btn btn-primary">Add book +</button>
-    </p>
-  </div>
-  <div class="container w-50 mx-auto">
-    <form class="d-none w-50" id="addBook">
-      <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title">
+  <div class="wrapper">
+    <header id="header">
+      <div class="mx-auto text-center">
+        <h1 class="display-4 text-white py-5">Welcome to my Library</h1>
+        <button id="btn" class="btn btn-primary btn-lg">Add book 
+          <svg class="svg_image" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </button>
       </div>
-      <div class="mb-3">
-        <label for="author" class="form-label">Author</label>
-        <input type="text" class="form-control" id="author">
+      <div>
+        <div class="container w-50 mx-auto mt-5">
+          <form class="d-none w-50 form-inline" id="addBook">
+            <div class="mb-3 input-group">
+              <input type="text" class="form-control" id="title" placeholder="Title of the book">
+              <span class="px-2">&nbsp;</span>
+              <input type="text" class="form-control" id="author" placeholder="Author">
+            </div>
+            <div class="mb-3 d-flex align-items-center justify-content-between">
+              <div class="col-4 pe-2">
+                <input type="number" class="form-control" id="page" placeholder="Number of pages">
+              </div>
+              <div class="col-4 form-check pe-4">
+                <label class="form-check-label text-white" for="read">Have you read it?</label>
+                <input type="checkbox" class="form-check-input" id="read">
+              </div>
+              <button type="submit" class="btn btn-primary submit">Submit</button>
+            </div>
+           
+            
+          </form>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="page" class="form-label">Page</label>
-        <input type="number" class="form-control" id="page">
+    </header>
+    <section class="main-section">
+      <div class="container mx-auto">
+        <div id="container-card"></div>
       </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="read">
-        <label class="form-check-label" for="read">Have you read it?</label>
-      </div>
-      <button type="submit" class="btn btn-primary submit">Submit</button>
-    </form>
+    </section>
   </div>
 
-  <div class="container mx-auto" >
-      <div id="container-card" ></div>
-  </div>
+
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
