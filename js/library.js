@@ -22,6 +22,14 @@ function Book(title, author, page, read) {
   this.read = read;
 }
 
+function delBook(e) {
+  const route = e.target.getAttribute('data-pos');
+  const dbFirebase = firebase.database().ref(`books/${route}`);
+
+  dbFirebase.remove();
+  window.location.reload();
+}
+
 function elements(key, dbTitle, dbAuthor, dbPage, dbRead) {
   const u = document.querySelector('#container-card');
 
@@ -79,14 +87,10 @@ function elements(key, dbTitle, dbAuthor, dbPage, dbRead) {
         read: true,
       });
     }
+    window.location.reload();
   });
 
-  button1.addEventListener('click', (e) => {
-    const route = e.target.getAttribute('data-pos');
-    const dbFirebase = firebase.database().ref(`books/${route}`);
-
-    dbFirebase.remove();
-  });
+  button1.addEventListener('click', delBook);
 
   u.appendChild(ul);
 }
@@ -94,7 +98,9 @@ function elements(key, dbTitle, dbAuthor, dbPage, dbRead) {
 function displayBooksSaved() {
   firebase.database().ref('books').orderByChild('title').on('value', (snapshot) => {
     snapshot.forEach((childSnapshot) => {
-      const { key } = childSnapshot;
+      const {
+        key,
+      } = childSnapshot;
       const dbTitle = childSnapshot.val().title;
       const dbAuthor = childSnapshot.val().author;
       const dbPage = childSnapshot.val().page;
