@@ -62,6 +62,7 @@ function elements(key, dbTitle, dbAuthor, dbPage, dbRead) {
         const dbFirebase = firebase.database().ref(`books/${route}`);
 
         dbFirebase.remove();
+        
       });
 
       u.appendChild(ul);

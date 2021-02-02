@@ -37,15 +37,19 @@ function displayBooksSaved() {
 }
 
 function addBookToLibrary() {
-
+  
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const page = document.getElementById('page').value;
   const read = document.getElementById('read').checked;
 
-  const book = new Book(title, author, page, read);
-
-  firebase.database().ref('books').push(book);
+  if (title == "" || author == "" || page == "") {
+    alert('Some inputs are empty')
+  }
+  else {
+    const book = new Book(title, author, page, read);
+    firebase.database().ref('books').push(book);
+  }
 }
 
 function appear() {
